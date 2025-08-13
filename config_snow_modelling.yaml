@@ -1,0 +1,107 @@
+# -*- coding: utf-8 -*-
+
+
+# Snow Distribution Terrain Analysis Configuration
+
+# COnfig file for correlate and predict final functioniung?
+
+
+
+# Path configurations
+paths:
+  library_dir: "E:/manned_aircraft/christiangoehrig/python/powdersearch_application"
+  snow_depth_train: r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\global_statistics\median_HS.tif"
+  snow_depth_test: r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\HS\2023_uniform.tif"
+  dem_path: r"E:\manned_aircraft\christiangoehrig\data\dem/dem_2m_swisstopo.tif"
+  dem_path_pred: r"E:\manned_aircraft\christiangoehrig\data\dem/dem_2m_swisstopo.tif"
+  vbica_folder_path: r"E:/manned_aircraft/christiangoehrig/data/vbica/smod5comp_advanced_decompGCmeans_32workers_32jobs"
+  representativeness_layer: #r"E:\manned_aircraft\christiangoehrig\data\terrain_layer_2m_uniform\representativeness.tif" 
+  avy_outlines_shp: r"E:\manned_aircraft\christiangoehrig\data\ROI\mountainfaces_and_slopes\avyoutlines_mtnfaces_studyarea_fulldischma.shp" # geometry feature extent
+  avy_outlines_csv: r"E:/manned_aircraft/christiangoehrig/data/avalanche_outlines/GRtot30yFor_outlines.csv" # bounding box extent
+  output_folder: r"E:/manned_aircraft/christiangoehrig/data/snowmodel/FINAL"
+# Analysis settings
+analysis:
+  name_train_area: "slopew"          # Description purpose only #wr643 = weighted residual 0.6 tpi 0.4 elevation polydegree 3
+  name_test_area: "slopew"           # Description purpose only
+  training: "outlines"              # Options: "outlines", "extent" (extent not implemented)
+  prediction: "outlines"            # Options: "outlines", "extent" (extent not implemented)
+  data_type: "absolute"             # description purpose only
+  year_train: "med"              # file selection (not working => define in input paths)
+  year_pred: "2023"                 # file selection (not working => define in input paths)
+  pixel_size: 2                     # resolution definement
+  neighbourhood_meter: 40           # neighbourhood definement
+
+
+# Absolutization of relative model
+# Lukschalp: 2787264 1184196 / 2023:0.83m
+# mtnwest:   2790580, 1178194 / 2023: 1.28m
+# slopwest:  2790691 1177759 / 2023:0.8m
+
+
+calibration:
+  enabled: True  # Set to false to disable calibration otherweise true
+  representativity_radius: 100  # meters - radius for circular representativity analysis
+  areas:
+    "75129":  # Replace with your actual outline ID
+      reference_coordinate: [2790691, 1177759]  # [x, y] in your coordinate system 
+      ground_truth_depth: 0.8 # measured snow depth in meters 
+
+    #"your_outline_id_2":  # Add more areas as needed
+     # reference_coordinate: [2651000, 1201000]
+      #ground_truth_depth: 2.1
+      
+
+tpi_enhancement:
+  method: "residual"                # Options: "residual", "raw", "gaussian"
+  tpi_weight: 0.5                   # Weight for TPI component (0.0-1.0) 0.6 good
+  elevation_weight: 0.5             # Weight for elevation component (0.0-1.0) 0.4 good
+  polynomial_degree: 1              # Degree for trend surface fitting (1-3)
+  combination_method: "weighted"     # Options: "weighted", "adaptive", "multiplicative"
+  smoothing_sigma: 2.0              # Sigma for Gaussian smoothing method
+
+
+# Analysis areas
+# special areas in shp
+# Dischma Northface: 1000000
+# Dischma Eastface: 2000000
+# Dischma Southface: 3000000
+# Dischma Westface: 4000000
+# Study Area (2m): 5000000
+# Dischma: 6000000
+# piz Ela Area: 8000000
+# Kanton Graubünden: 90000000
+areas:   
+  avy_outline_train: ["75129"]#, "71603", "71604", "71605", "71607", "71608", "71609", "71610", "71612", "71613", "71617", "71618", "71619", "71620", "71621", "71622", "71624", "71626", "71627", "71629", "71631", "71632", "71633", "71634", "71635", "71636", "71637", "71638", "71645", "71646", "71648", "71650", "71651", "71652", "71653", "71656", "72244", "72248", "72250", "72251", "72252", "72253", "72255", "72256", "72257", "72258", "74436", "75114", "75116", "75117", "75122", "75126", "75127", "75128", "75130", "75131", "75134", "75135", "75136", "75139", "75140", "75141", "75144", "75145", "75146", "75147", "75148", "75149", "75150", "75153", "75155", "75156", "75157", "75158", "75159", "75161", "75162", "75163", "75165", "75167", "75168", "75169", "75170", "75172", "75173", "75175", "75178", "75179", "75181", "75184", "75185", "75186", "75187", "75189", "75190", "75191", "75192", "75193", "75194", "75195", "75196", "75197", "75198", "75201", "75204", "75207", "75208", "75209", "75210", "75211", "75214", "75215", "75216", "75217", "75218", "75219", "75220", "75222", "75223", "75224", "71606", "71611", "71615", "71616", "71628", "71644", "71647", "72228", "75119", "75121", "75132", "75142", "75143", "75151", "75152", "75154", "75166", "75177", "75188", "75200", "75212", "75213", "75221", "75225", "177393", "177398", "71623", "71625", "71630", "72245", "72254", "72259", "75124", "75129", "75133", "75137", "75160", "75164", "75171", "75174", "75176", "75180", "75182", "75199"]
+  avy_outline_pred: ["75129"] #["71602", "71603", "71604", "71605", "71607", "71608", "71609", "71610", "71612", "71613", "71617", "71618", "71619", "71620", "71621", "71622", "71624", "71626", "71627", "71629", "71631", "71632", "71633", "71634", "71635", "71636", "71637", "71638", "71645", "71646", "71648", "71650", "71651", "71652", "71653", "71656", "72244", "72248", "72250", "72251", "72252", "72253", "72255", "72256", "72257", "72258", "74436", "75114", "75116", "75117", "75122", "75126", "75127", "75128", "75130", "75131", "75134", "75135", "75136", "75139", "75140", "75141", "75144", "75145", "75146", "75147", "75148", "75149", "75150", "75153", "75155", "75156", "75157", "75158", "75159", "75161", "75162", "75163", "75165", "75167", "75168", "75169", "75170", "75172", "75173", "75175", "75178", "75179", "75181", "75184", "75185", "75186", "75187", "75189", "75190", "75191", "75192", "75193", "75194", "75195", "75196", "75197", "75198", "75201", "75204", "75207", "75208", "75209", "75210", "75211", "75214", "75215", "75216", "75217", "75218", "75219", "75220", "75222", "75223", "75224", "71606", "71611", "71615", "71616", "71628", "71644", "71647", "72228", "75119", "75121", "75132", "75142", "75143", "75151", "75152", "75154", "75166", "75177", "75188", "75200", "75212", "75213", "75221", "75225", "177393", "177398", "71623", "71625", "71630", "72245", "72254", "72259", "75124", "75129", "75133", "75137", "75160", "75164", "75171", "75174", "75176", "75180", "75182", "75199"]
+  area_train_extent: null  # [min_x, min_y, max_x, max_y]
+  area_predict_extent: null  # [min_x, min_y, max_x, max_y]
+
+
+# Terrain features to analyze
+terrain_features:
+  - "slope"
+  - "aspect"
+  - "curvature_{neighbourhood_meter}"
+  - "tpi_{neighbourhood_meter}"
+  - "elevation"
+  - "snowdepth"
+
+
+# Visualization settings
+visualization:
+  colormap: "cmc.navia_r"
+  snow_depth_range: [0, 5]  # deprecated
+  diff_range: [-5, 5]   # deprecated
+  diff_colormap: "cmc.vik_r"
+  hexbin_gridsize: 200
+  fontsize_corr_plots: 24
+  fontsize_maps: 24
+  fontsize_corr_plots_cal_analysis: 12
+  
+# Processing settings
+processing:
+  parallel: true
+  max_workers: 32 # Set to null for auto-detection
+  
+# Validation settings
+validate_paths: true  # Set to false to disable path validation

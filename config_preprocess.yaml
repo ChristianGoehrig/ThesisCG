@@ -1,0 +1,85 @@
+# -*- coding: utf-8 -*-
+
+
+# Snow Distribution Analysis Configuration
+
+# Path configurations
+paths:
+  library_dir: r"E:/manned_aircraft/christiangoehrig/python"  # Location of powdersearch.py module
+  dataset_dir: r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform"  # Directory with original snow depth maps
+  reference_raster: r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform/2015_uniform.tif"  # Reference for alignment
+  dem_path: r"E:/manned_aircraft/christiangoehrig/data/dem/dem_2m_correlation_raster.tif"  # DEM for terrain features
+  mask_path: r"E:/manned_aircraft/christiangoehrig/data/mask/KonsistenteMaske_final_2023_2m.tif"  # Optional mask
+  output_folder: r"E:/manned_aircraft/christiangoehrig/data/datasets/002_05m_Ultracam_analysis_test"  # Root output folder
+
+# Analysis settings
+analysis:
+  # Years to process (leave empty to automatically detect from filenames)
+  years: [2010,2012,2013,2014,2015,2016,2017, 2019, 2020, 2021, 2022, 2023, 2024]
+  
+  # CRS for processing
+  crs: "EPSG:2056"
+  
+  # Resolution (set to null to use reference raster resolution)
+  resolution: null
+  
+  # Resampling method: nearest, bilinear, cubic, cubic_spline, lanczos, average, mode
+  resampling_method: "average"
+  
+  # Whether to apply mask from reference raster
+  apply_ref_mask: true
+  
+  # Whether to set negative values to nodata
+  set_negative_to_nodata: true
+  
+  # Processing flags
+  create_violin: false
+  calc_timeseries_stats: true
+  calc_yearly_diffs: false
+  normalize_data: false
+  calc_norm_stats: false
+  calc_terrain_features: false
+  calc_pearson: false
+  calc_clusters: false
+  
+  # Normalization method: single_year_relative or single_year_minmax
+  normalization_method: "single_year_relative"
+  
+  # Difference map mode: absolute or relative
+  diff_mode: "absolute"
+  
+  # Pixel clustering parameters
+  line_reduction_factor: 100
+  number_of_clusters: 4
+  
+  # DEM parameters
+  pixel_size: 2
+  neighbourhood_meter: 20
+
+# Terrain features to analyze
+terrain_features:
+  - "slope"
+  - "aspect"
+  - "curvature_20"
+  - "tpi_20"
+  - "elevation"
+
+# Visualization settings
+visualization:
+  colormap: "cmc.navia_r"
+  combined_plot: true
+  subsample_factor: 10
+  max_depth: 6
+  remove_outliers: true
+  snow_depth_range: [0, 5]
+  diff_range: [-5, 5]
+  diff_colormap: "cmc.vik_r"
+  hexbin_gridsize: 200
+  
+# Processing settings
+processing:
+  parallel: true
+  max_workers: 4  # Set to null for auto-detection
+  
+# Validation settings
+validate_paths: true  # Set to false to disable path validation
