@@ -5,12 +5,12 @@
 
 # Path configurations
 paths:
-  library_dir: r"E:/manned_aircraft/christiangoehrig/python"  # Location of powdersearch.py module
-  dataset_dir: r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform"  # Directory with original snow depth maps
-  reference_raster: r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform/2015_uniform.tif"  # Reference for alignment
-  dem_path: r"E:/manned_aircraft/christiangoehrig/data/dem/dem_2m_correlation_raster.tif"  # DEM for terrain features
-  mask_path: r"E:/manned_aircraft/christiangoehrig/data/mask/KonsistenteMaske_final_2023_2m.tif"  # Optional mask
-  output_folder: r"E:/manned_aircraft/christiangoehrig/data/datasets/002_05m_Ultracam_analysis_test"  # Root output folder
+  library_dir:   # Location of powdersearch.py module
+  dataset_dir:  # Directory with original snow depth maps
+  reference_raster:  # Reference for alignment
+  dem_path:   # DEM for terrain features
+  mask_path:   # Optional mask
+  output_folder: # Root output folder
 
 # Analysis settings
 analysis:
@@ -82,4 +82,5 @@ processing:
   max_workers: 4  # Set to null for auto-detection
   
 # Validation settings
+
 validate_paths: true  # Set to false to disable path validation
