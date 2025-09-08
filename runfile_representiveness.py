@@ -30,9 +30,9 @@ from snow_site_analysis import run_site_representativity_analysis
 # =============================================================================
 
 # Input and output paths
-INPUT_FOLDER = r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform"  # Directory containing snow depth rasters
-STATION_LOCATIONS = "E:\manned_aircraft\christiangoehrig\data\weatherstations\Lukschalp.csv"   # CSV file with station locations (optional)
-DEM_PATH = r"E:\manned_aircraft\christiangoehrig\data\dem\dem.tif"                 # DEM file for elevation analysis (optional)
+INPUT_FOLDER =   # Directory containing snow depth rasters
+STATION_LOCATIONS =   # CSV file with station locations (optional)
+DEM_PATH =  # DEM file for elevation analysis (optional)
 OUTPUT_NAME = f"snow_analysis_{datetime.now().strftime('%Y%m%d')}"  # Output folder name
 
 # Analysis parameters
@@ -99,4 +99,5 @@ if __name__ == "__main__":
             optimal = "Optimal" if row['is_optimal'] else "Not optimal"
             print(f"  {row['station']}: Score={row['representativity_score']:.2f} ({optimal})")
     
+
     print("\nAnalysis complete!")
