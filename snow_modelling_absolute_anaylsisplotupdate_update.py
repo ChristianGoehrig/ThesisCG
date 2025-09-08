@@ -18,11 +18,6 @@ Key features:
 - Trains and predicts models using exact outline geometry
 
 
-UPDATE:
-    
-    Buffered terrain parameter calculation for having no artefacts in fina lprocessing extent
-    
-    
 Author: Christian Goehrig
 Modified: Mixed approach implementation
 """
@@ -34,7 +29,7 @@ Modified: Mixed approach implementation
 
 
 
-library_dir = r"E:\manned_aircraft\christiangoehrig\python\powdersearch_application"
+library_dir = r""
 import sys
 sys.path.append(library_dir)
 import powdersearch as ps
@@ -2733,4 +2728,5 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     # Run main function with specified config file
+
     sys.exit(main(args.config))#!/usr/bin/env python
