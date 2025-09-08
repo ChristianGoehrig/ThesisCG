@@ -17,7 +17,7 @@ import re
 from cmcrameri import cm
 
 # Append library directory
-library_dir = r"E:\manned_aircraft\christiangoehrig\python\functions\00_dev"
+library_dir = r""
 sys.path.append(library_dir)
 import powdersearch as ps
 
@@ -41,9 +41,7 @@ def feature_sensitivity(
     Output:
         Plot: Snowdepth per feature class for different elevation bands and pixelcount per class in one plot
 
-    
-    !!! Elevation classes should be chosen by literture (Grünewald) or correlation results of the ROI!!!
-    
+
     Parameters:
     -----------
     -----------
@@ -285,33 +283,31 @@ def feature_sensitivity(
 
 # Example usage
 feature_sensitivity(
-    library_dir=r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent",
-    input_snowdepth=r"E:\manned_aircraft\christiangoehrig\data\representativeness\deviation_mean_negatives.tif",
+    library_dir=r"",
+    input_snowdepth=r"",
     feature_paths=[
-        r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\terrain_layer/aspect_2m.tif"  ,
-        #r"E:\manned_aircraft\christiangoehrig\data\terrain_layer_2m_uniform/aspect.tif",
-        #r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\terrain_layer\tpi_20m_2m_001.tif",
-        #r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\terrain_layer\curvature_20m_2m_001.tif"
+        #r"aspect.tif",
+        #r"tpi.tif",
+        #r"curvature.tif"
     ],
-    elevation_path=r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent/terrain_layer\dem_2m.tif" ,
-    #elevation_path= r"E:\manned_aircraft\christiangoehrig\data\dem\dem_2m_correlation_raster.tif",
-    output_folder_name=r"E:\manned_aircraft\christiangoehrig\data\representativeness\negatives",
+    elevation_path=r"dem_2m.tif" ,
+    output_folder_name=r"",
     feature_names=["Aspect"],
     feature_classes_list=[
         [0, 22.5, 67.5, 112.5, 157.5, 202.5, 247.5, 292.5, 337.5, 360], # aspect classes
         #[-5, -1,-0.5,0,0.5,1,5] #TPI and curvature classes
         #[1, 10, 25, 30,35,40, 45, 90],  # Slope classes
-        #[0,0.11,0.33,0.45,0.76,0.97,3.64]
        
     ],
     feature_class_labels_list=[
        ["North","Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest"],    #aspect labels
        #["Strong Concave","Concave","Moderately Concave", "Flat", "Moderately Convex","Convex", "Strong Convex"],  # Curvature labels
         #['0-9°', '10-19°', '20-29°', '30-34°', '35-39°',"40-45°", ">45°"],  # Slope labels
-       # ["Very Low", "Low", "Moderately Low", "Moderately High", "High", "Very High"],
-        #["Very Consistent", "Consistent", "Moderately Consistent","Moderately Volatile", "Volatile","Very Volatile"]
+       # ["Very Low", "Low", "Moderately Low", "Moderately High", "High", "Very High"], #TPI labels
+        #["Very Consistent", "Consistent", "Moderately Consistent","Moderately Volatile", "Volatile","Very Volatile"] # Coefficient of Variance labelling
     ],
     elevation_classes=[1800,2200,2600,2800, np.inf],
     elevation_class_labels=["1801-2200m","2201-2600","2601-2800", ">2800m"],
     nodata_value=-999
+
 )
