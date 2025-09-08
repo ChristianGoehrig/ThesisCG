@@ -3,22 +3,23 @@
 
 # Snow Distribution Terrain Analysis Configuration
 
-# COnfig file for correlate and predict final functioniung?
+# Config file for correlation analysis and prediction of snow depth
 
 
 
 # Path configurations
 paths:
-  library_dir: "E:/manned_aircraft/christiangoehrig/python/powdersearch_application"
-  snow_depth_train: r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\global_statistics\median_HS.tif"
-  snow_depth_test: r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\HS\2023_uniform.tif"
-  dem_path: r"E:\manned_aircraft\christiangoehrig\data\dem/dem_2m_swisstopo.tif"
-  dem_path_pred: r"E:\manned_aircraft\christiangoehrig\data\dem/dem_2m_swisstopo.tif"
-  vbica_folder_path: r"E:/manned_aircraft/christiangoehrig/data/vbica/smod5comp_advanced_decompGCmeans_32workers_32jobs"
-  representativeness_layer: #r"E:\manned_aircraft\christiangoehrig\data\terrain_layer_2m_uniform\representativeness.tif" 
-  avy_outlines_shp: r"E:\manned_aircraft\christiangoehrig\data\ROI\mountainfaces_and_slopes\avyoutlines_mtnfaces_studyarea_fulldischma.shp" # geometry feature extent
-  avy_outlines_csv: r"E:/manned_aircraft/christiangoehrig/data/avalanche_outlines/GRtot30yFor_outlines.csv" # bounding box extent
-  output_folder: r"E:/manned_aircraft/christiangoehrig/data/snowmodel/FINAL"
+  library_dir: 
+  snow_depth_train: 
+  snow_depth_test: 
+  dem_path: 
+  dem_path_pred: 
+  vbica_folder_path: 
+  representativeness_layer: 
+  avy_outlines_shp:  
+  avy_outlines_csv:  
+  output_folder: 
+  
 # Analysis settings
 analysis:
   name_train_area: "slopew"          # Description purpose only #wr643 = weighted residual 0.6 tpi 0.4 elevation polydegree 3
@@ -45,11 +46,6 @@ calibration:
     "75129":  # Replace with your actual outline ID
       reference_coordinate: [2790691, 1177759]  # [x, y] in your coordinate system 
       ground_truth_depth: 0.8 # measured snow depth in meters 
-
-    #"your_outline_id_2":  # Add more areas as needed
-     # reference_coordinate: [2651000, 1201000]
-      #ground_truth_depth: 2.1
-      
 
 tpi_enhancement:
   method: "residual"                # Options: "residual", "raw", "gaussian"
@@ -104,4 +100,5 @@ processing:
   max_workers: 32 # Set to null for auto-detection
   
 # Validation settings
+
 validate_paths: true  # Set to false to disable path validation
