@@ -19,7 +19,6 @@ IMPORTANT NOTICE:
 #   function
 #   feature_subgroup_sensitivity
 
-library_dir = r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent"
 import pandas as pd
 import numpy as np
 import glob
@@ -37,9 +36,9 @@ import powdersearch as ps
 NO_DATA_VALUE = -999
 
 #   define output folder
-output_folder_name = r"E:\manned_aircraft\christiangoehrig\analysis\SDD\slopew_thesis\timeseries_median"  # output folder
-input_folder = r"E:\manned_aircraft\christiangoehrig\data\datasets\slopew\HS"  # snow depth train
-feature_path = r"E:\manned_aircraft\christiangoehrig\data\datasets\max_common_acquisition_extent\terrain_layer\curv_2m_z.tif"
+output_folder_name =  # output folder
+input_folder =   # snow depth train
+feature_path = # Terrain Parameter TIFF
 
 
 # ====================== CONFIGURATION SECTION ======================
@@ -401,5 +400,6 @@ print(f"Analysis completed with {n_classes} {feature_name} classes: {list(class_
 # Clean up
 del snowdepth_timeseries
 snowdepth_timeseries = None
+
 
 print(f"Analysis completed with {n_classes} {feature_name} classes: {list(class_names.values())}!")
