@@ -3,12 +3,12 @@
 
 # Path configurations
 paths:
-  library_dir: r"E:\manned_aircraft\christiangoehrig\python\powdersearch_application"  # Directory containing powdersearch.py
-  dataset_dir: r"E:\manned_aircraft\christiangoehrig\data\datasets\001_2m_no18_common_extent\uniform"    # Directory containing snow depth data
-  output_folder: r"E:\manned_aircraft\christiangoehrig\analysis\station_representativeness\new"          # Directory for analysis results
-  dem_path: "path/to/dem.tif"              # Path to DEM file
-  feature_layers_dir: "path/to/features"   # Directory containing terrain feature layers
-  station_locations: r"E:\manned_aircraft\christiangoehrig\data\weatherstations/Lukschalp.csv" # CSV file with station locations
+  library_dir:    # Directory containing powdersearch.py
+  dataset_dir:    # Directory containing snow depth data
+  output_folder:  # Directory for analysis results
+  dem_path:       # Path to DEM file
+  feature_layers_dir:   # Directory containing terrain feature layers
+  station_locations: # CSV file with station locations
 
 # Analysis settings
 analysis:
@@ -71,4 +71,5 @@ output:
   export_csv: true
   export_tiff: true
   export_plots: true
+
   create_report: true
