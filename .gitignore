@@ -1,0 +1,37 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Editors / IDEs
+.vscode/
+.idea/
+.spyproject/
+.spyderproject
+.spyderworkspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Local config overrides (real paths, not meant for the public repo)
+config*.local.yaml
+
+# Geospatial / raster / analysis outputs produced by these scripts
+*.tif
+*.tiff
+*.nc
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
